@@ -14,9 +14,12 @@ export class CustomersService {
   ) {}
 
   async getStatement(id: number) {
-    const customer = await this.customersRepository.findOne({ where: { id }, relations: ['transacoes'] });
+    const customer = await this.customersRepository.findOne({
+      where: { id },
+      relations: ["transacoes"],
+    });
     if (!customer) {
-      throw new HttpException('Cliente não encontrado', HttpStatus.NOT_FOUND);
+      throw new HttpException("Cliente não encontrado", HttpStatus.NOT_FOUND);
     }
 
     const ultimasTransacoes = customer.transacoes
@@ -29,7 +32,7 @@ export class CustomersService {
         data_extrato: new Date(),
         limite: customer.limite,
       },
-      ultimas_transacoes: ultimasTransacoes
+      ultimas_transacoes: ultimasTransacoes,
     };
   }
 }

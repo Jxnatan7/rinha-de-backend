@@ -6,12 +6,12 @@ export class Customer {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'integer', default: 0 })
+  @Column({ type: "integer", default: 0 })
   limite: number;
 
-  @Column({ type: 'integer', default: 0 })
+  @Column({ type: "integer", default: 0 })
   saldo: number;
 
-  @OneToMany(() => Transaction, transaction => transaction.customer)
+  @OneToMany(() => Transaction, (transaction) => transaction.customer)
   transacoes: Transaction[];
 }

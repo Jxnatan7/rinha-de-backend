@@ -6,18 +6,18 @@ export class Transaction {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'integer' })
+  @Column({ type: "integer" })
   valor: number;
 
-  @Column({ type: 'char', length: 1 })
+  @Column({ type: "char", length: 1 })
   tipo: string;
 
   @Column({ length: 10 })
   descricao: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   realizada_em: Date;
 
-  @ManyToOne(() => Customer, customer => customer.transacoes)
+  @ManyToOne(() => Customer, (customer) => customer.transacoes)
   customer: Customer;
 }
