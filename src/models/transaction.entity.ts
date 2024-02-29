@@ -1,7 +1,9 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Customer } from "./customer.entity";
 
 @Entity()
+@Index('idx_transaction_id', ['id'])
+@Index('idx_transaction_customer_id', ['customer'])
 export class Transaction {
   @PrimaryGeneratedColumn()
   id: number;

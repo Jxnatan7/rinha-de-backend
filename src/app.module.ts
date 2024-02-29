@@ -2,11 +2,11 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import ormConfig from "./config/orm.config";
-import { CustomersService } from "./modules/Customer/customer.service";
-import { TransactionsService } from "./modules/Transaction/transaction.service";
+import { CustomerService } from "./modules/Customer/customer.service";
+import { TransactionService } from "./modules/Transaction/transaction.service";
 import { Customer } from "./models/customer.entity";
 import { Transaction } from "./models/transaction.entity";
-import { CustomersController } from "./modules/Customer/customer.controller";
+import { CustomerController } from "./modules/Customer/customer.controller";
 import { SeederService } from "./seeder/seeder.service";
 
 @Module({
@@ -21,8 +21,8 @@ import { SeederService } from "./seeder/seeder.service";
     }),
     TypeOrmModule.forFeature([Customer, Transaction]),
   ],
-  controllers: [CustomersController],
-  providers: [CustomersService, TransactionsService, SeederService],
+  controllers: [CustomerController],
+  providers: [CustomerService, TransactionService, SeederService],
 })
 export class AppModule {
   constructor(private seederService: SeederService) {
